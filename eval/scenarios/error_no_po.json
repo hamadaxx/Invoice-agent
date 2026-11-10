@@ -1,0 +1,32 @@
+{
+  "id": "error_no_po",
+  "category": "error",
+  "description": "Invoice has no PO number at all (OfficePro, INV-2236).",
+  "invoices": [
+    "INV-2236"
+  ],
+  "approver": {
+    "INV-2236": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2236": "flagged"
+    },
+    "required_tools": {
+      "INV-2236": [
+        "read_invoice",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2236"
+      }
+    ],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

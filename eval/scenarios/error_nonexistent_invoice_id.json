@@ -1,0 +1,24 @@
+{
+  "id": "error_nonexistent_invoice_id",
+  "category": "error",
+  "description": "The task names an invoice ID that does not exist in the system at all.",
+  "invoices": [
+    "INV-9999"
+  ],
+  "approver": {},
+  "expected": {
+    "outcomes": {
+      "INV-9999": "pending"
+    },
+    "required_tools": {
+      "INV-9999": [
+        "read_invoice"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

@@ -1,0 +1,44 @@
+{
+  "id": "error_po_does_not_exist",
+  "category": "error",
+  "description": "Invoice quotes a PO number that was never issued.",
+  "invoices": [
+    "INV-9102"
+  ],
+  "seed_patch": {
+    "invoices": [
+      {
+        "invoice_id": "INV-9102",
+        "vendor_name": "CleanCo",
+        "po_number": "PO-9999",
+        "amount": 800,
+        "due_date": "2026-12-09",
+        "raw_text": "Invoice INV-9102 from CleanCo. Deep clean, PO-9999. Total 800 TND."
+      }
+    ]
+  },
+  "approver": {
+    "INV-9102": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-9102": "flagged"
+    },
+    "required_tools": {
+      "INV-9102": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-9102"
+      }
+    ],
+    "stop_reason": "done"
+  },
+  "chaos": null,
+  "limits": null
+}

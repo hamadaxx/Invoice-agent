@@ -1,0 +1,35 @@
+{
+  "id": "error_amount_mismatch",
+  "category": "error",
+  "description": "Invoice amount matches the invoice record but not the PO (TechSupply, PO-1005: 6200 vs 5500).",
+  "invoices": [
+    "INV-2235"
+  ],
+  "approver": {
+    "INV-2235": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2235": "flagged"
+    },
+    "required_tools": {
+      "INV-2235": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2235"
+      }
+    ],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

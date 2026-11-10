@@ -1,0 +1,9 @@
+[
+  [["read_invoice", {"invoice_id": "INV-2231"}]],
+  [["lookup_purchase_order", {"po_number": "PO-1001"}]],
+  [["get_vendor", {"vendor_name": "TechSupply"}]],
+  [["check_payment_history", {"invoice_id": "INV-2231"}]],
+  [["schedule_payment", {"invoice_id": "INV-2231", "vendor_id": "V-01", "amount": 40000,
+                         "reason": "PO-1001 open, amount and vendor match, never paid."}]],
+  "Paid INV-2231 to TechSupply, 40,000 TND."
+]

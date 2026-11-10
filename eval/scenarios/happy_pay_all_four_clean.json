@@ -1,0 +1,60 @@
+{
+  "id": "happy_pay_all_four_clean",
+  "category": "happy",
+  "description": "Pay all four clean invoices together in one batch.",
+  "invoices": [
+    "INV-2231",
+    "INV-2232",
+    "INV-2233",
+    "INV-2234"
+  ],
+  "approver": {
+    "INV-2231": true,
+    "INV-2232": true,
+    "INV-2233": true,
+    "INV-2234": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2231": "paid",
+      "INV-2232": "paid",
+      "INV-2233": "paid",
+      "INV-2234": "paid"
+    },
+    "required_tools": {
+      "INV-2231": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2232": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2233": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2234": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

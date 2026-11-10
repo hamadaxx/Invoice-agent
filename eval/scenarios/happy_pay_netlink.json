@@ -1,0 +1,30 @@
+{
+  "id": "happy_pay_netlink",
+  "category": "happy",
+  "description": "Pay a single clean invoice from NetLink Telecom, alone.",
+  "invoices": [
+    "INV-2234"
+  ],
+  "approver": {
+    "INV-2234": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2234": "paid"
+    },
+    "required_tools": {
+      "INV-2234": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

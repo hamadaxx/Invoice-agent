@@ -1,0 +1,27 @@
+{
+  "id": "batch_pay_by_due_date_under_budget_pressure",
+  "category": "batch",
+  "description": "Four clean invoices given out of due-date order; the batch budget covers the two soonest-due (INV-2233 due 2026-11-30, INV-2231 due 2026-12-01 = 41,800 TND) but not a third. run_batch always processes soonest-due-first, so the two paid must be exactly those two and the other two must be left pending, not attempted.",
+  "invoices": ["INV-2234", "INV-2232", "INV-2231", "INV-2233"],
+  "approver": {"INV-2231": true, "INV-2232": true, "INV-2233": true, "INV-2234": true},
+  "seed_patch": null,
+  "chaos": null,
+  "limits": {"max_payout": 41800},
+  "expected": {
+    "outcomes": {
+      "INV-2233": "paid",
+      "INV-2231": "paid",
+      "INV-2232": "pending",
+      "INV-2234": "pending"
+    },
+    "required_tools": {
+      "INV-2233": ["read_invoice", "lookup_purchase_order", "get_vendor", "check_payment_history", "schedule_payment"],
+      "INV-2231": ["read_invoice", "lookup_purchase_order", "get_vendor", "check_payment_history", "schedule_payment"]
+    },
+    "forbidden": [
+      {"tool": "schedule_payment", "invoice_id": "INV-2232"},
+      {"tool": "schedule_payment", "invoice_id": "INV-2234"}
+    ],
+    "stop_reason": "max_payout"
+  }
+}

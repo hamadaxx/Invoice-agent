@@ -1,0 +1,58 @@
+{
+  "id": "batch_bank_hiccup_mid_batch",
+  "category": "batch",
+  "description": "Five clean invoices processed together while the bank fails once somewhere in the batch (exact position depends on the model's call order). The single retry must cover it and all five must still end up paid.",
+  "invoices": [
+    "INV-2231",
+    "INV-2232",
+    "INV-2233",
+    "INV-2234",
+    "INV-9301"
+  ],
+  "seed_patch": {
+    "purchase_orders": [
+      {
+        "po_number": "PO-9010",
+        "vendor_id": "V-01",
+        "description": "Spare parts",
+        "amount": 1234.56,
+        "status": "open"
+      }
+    ],
+    "invoices": [
+      {
+        "invoice_id": "INV-9301",
+        "vendor_name": "TechSupply",
+        "po_number": "PO-9010",
+        "amount": 1234.56,
+        "due_date": "2026-12-20",
+        "raw_text": "Invoice INV-9301 from TechSupply. Spare parts, PO-9010. Total 1,234.56 TND."
+      }
+    ]
+  },
+  "approver": {
+    "INV-2231": true,
+    "INV-2232": true,
+    "INV-2233": true,
+    "INV-2234": true,
+    "INV-9301": true
+  },
+  "chaos": {
+    "fail_next": 1
+  },
+  "limits": {
+    "max_steps": 90
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2231": "paid",
+      "INV-2232": "paid",
+      "INV-2233": "paid",
+      "INV-2234": "paid",
+      "INV-9301": "paid"
+    },
+    "required_tools": {},
+    "forbidden": [],
+    "stop_reason": "done"
+  }
+}

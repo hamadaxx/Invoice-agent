@@ -1,0 +1,24 @@
+{
+  "id": "batch_budget_cap_crossed",
+  "category": "batch",
+  "description": "Two clean invoices together (46,000 TND) cross a 10,000 TND batch budget; the run must stop at max_payout with at most one of them paid.",
+  "invoices": [
+    "INV-2231",
+    "INV-2232"
+  ],
+  "approver": {
+    "INV-2231": true,
+    "INV-2232": true
+  },
+  "limits": {
+    "max_payout": 10000
+  },
+  "expected": {
+    "outcomes": {},
+    "required_tools": {},
+    "forbidden": [],
+    "stop_reason": "max_payout"
+  },
+  "seed_patch": null,
+  "chaos": null
+}

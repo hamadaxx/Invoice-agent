@@ -1,0 +1,33 @@
+{
+  "id": "error_closed_po",
+  "category": "error",
+  "description": "PO on the invoice is already closed (CleanCo, PO-1007).",
+  "invoices": [
+    "INV-2238"
+  ],
+  "approver": {
+    "INV-2238": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2238": "flagged"
+    },
+    "required_tools": {
+      "INV-2238": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2238"
+      }
+    ],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

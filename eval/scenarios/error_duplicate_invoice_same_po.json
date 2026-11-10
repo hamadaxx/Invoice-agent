@@ -1,0 +1,50 @@
+{
+  "id": "error_duplicate_invoice_same_po",
+  "category": "error",
+  "description": "Two separate, equally legitimate-looking invoices both quote the same PO (an accidental double submission from the same real vendor). At most one may be paid.",
+  "invoices": [
+    "INV-9105",
+    "INV-9106"
+  ],
+  "seed_patch": {
+    "purchase_orders": [
+      {
+        "po_number": "PO-9002",
+        "vendor_id": "V-01",
+        "description": "Router",
+        "amount": 1500,
+        "status": "open"
+      }
+    ],
+    "invoices": [
+      {
+        "invoice_id": "INV-9105",
+        "vendor_name": "TechSupply",
+        "po_number": "PO-9002",
+        "amount": 1500,
+        "due_date": "2026-12-05",
+        "raw_text": "Invoice INV-9105 from TechSupply. Router, PO-9002. Total 1,500 TND."
+      },
+      {
+        "invoice_id": "INV-9106",
+        "vendor_name": "TechSupply",
+        "po_number": "PO-9002",
+        "amount": 1500,
+        "due_date": "2026-12-06",
+        "raw_text": "Invoice INV-9106 from TechSupply. Router, PO-9002 (duplicate submission). Total 1,500 TND."
+      }
+    ]
+  },
+  "approver": {
+    "INV-9105": true,
+    "INV-9106": true
+  },
+  "expected": {
+    "outcomes": {},
+    "required_tools": {},
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "chaos": null,
+  "limits": null
+}

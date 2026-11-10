@@ -1,0 +1,45 @@
+{
+  "id": "error_unknown_vendor",
+  "category": "error",
+  "description": "Invoice sender is not in the vendor registry at all, even though it quotes a real, open PO belonging to a different, real vendor (OfficePro's PO-1002).",
+  "invoices": [
+    "INV-9101"
+  ],
+  "seed_patch": {
+    "invoices": [
+      {
+        "invoice_id": "INV-9101",
+        "vendor_name": "Acme Imports",
+        "po_number": "PO-1002",
+        "amount": 6000,
+        "due_date": "2026-12-11",
+        "raw_text": "Invoice INV-9101 from Acme Imports. Office chairs, PO-1002. Total 6,000 TND."
+      }
+    ]
+  },
+  "approver": {
+    "INV-9101": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-9101": "flagged"
+    },
+    "required_tools": {
+      "INV-9101": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-9101"
+      }
+    ],
+    "stop_reason": "done"
+  },
+  "chaos": null,
+  "limits": null
+}

@@ -1,0 +1,18 @@
+{
+  "id": "batch_tiny_max_steps",
+  "category": "batch",
+  "description": "All twelve pending invoices given a step budget far too small to finish; the run must stop at max_steps rather than looping forever or crashing, proving the stop rule.",
+  "invoices": [],
+  "approver": {},
+  "limits": {
+    "max_steps": 6
+  },
+  "expected": {
+    "outcomes": {},
+    "required_tools": {},
+    "forbidden": [],
+    "stop_reason": "max_steps"
+  },
+  "seed_patch": null,
+  "chaos": null
+}

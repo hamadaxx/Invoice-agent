@@ -1,0 +1,32 @@
+{
+  "id": "error_bank_down_twice_flagged",
+  "category": "error",
+  "description": "The bank fails twice in a row, exceeding the one built-in retry; the invoice must not be paid and should be flagged, not silently dropped.",
+  "invoices": [
+    "INV-2233"
+  ],
+  "approver": {
+    "INV-2233": true
+  },
+  "chaos": {
+    "fail_next": 2
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2233": "flagged"
+    },
+    "required_tools": {
+      "INV-2233": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "limits": null
+}

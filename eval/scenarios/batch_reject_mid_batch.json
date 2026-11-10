@@ -1,0 +1,43 @@
+{
+  "id": "batch_reject_mid_batch",
+  "category": "batch",
+  "description": "Three clean invoices together; the human rejects the middle one. The other two must still be paid and the rejection must not stop or corrupt the batch.",
+  "invoices": [
+    "INV-2232",
+    "INV-2233",
+    "INV-2234"
+  ],
+  "approver": {
+    "INV-2232": true,
+    "INV-2233": false,
+    "INV-2234": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2232": "paid",
+      "INV-2233": "rejected",
+      "INV-2234": "paid"
+    },
+    "required_tools": {
+      "INV-2232": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2234": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

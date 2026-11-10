@@ -1,0 +1,108 @@
+{
+  "id": "happy_seed_patch_combo_together",
+  "category": "happy",
+  "description": "Pay the decimal-amount, lowercase-name and new-vendor invoices together in one batch.",
+  "invoices": [
+    "INV-9301",
+    "INV-9302",
+    "INV-9303"
+  ],
+  "seed_patch": {
+    "vendors": [
+      {
+        "vendor_id": "V-06",
+        "name": "BrightClean Co",
+        "iban": "TN59 4000 9000 1122 3344 5566",
+        "active": 1
+      }
+    ],
+    "purchase_orders": [
+      {
+        "po_number": "PO-9010",
+        "vendor_id": "V-01",
+        "description": "Spare parts",
+        "amount": 1234.56,
+        "status": "open"
+      },
+      {
+        "po_number": "PO-9011",
+        "vendor_id": "V-02",
+        "description": "Desk lamps",
+        "amount": 275,
+        "status": "open"
+      },
+      {
+        "po_number": "PO-9012",
+        "vendor_id": "V-06",
+        "description": "Office deep clean",
+        "amount": 450,
+        "status": "open"
+      }
+    ],
+    "invoices": [
+      {
+        "invoice_id": "INV-9301",
+        "vendor_name": "TechSupply",
+        "po_number": "PO-9010",
+        "amount": 1234.56,
+        "due_date": "2026-12-20",
+        "raw_text": "Invoice INV-9301 from TechSupply. Spare parts, PO-9010. Total 1,234.56 TND."
+      },
+      {
+        "invoice_id": "INV-9302",
+        "vendor_name": "officepro",
+        "po_number": "PO-9011",
+        "amount": 275,
+        "due_date": "2026-12-18",
+        "raw_text": "invoice INV-9302 from officepro. desk lamps, po-9011. total 275 tnd."
+      },
+      {
+        "invoice_id": "INV-9303",
+        "vendor_name": "BrightClean Co",
+        "po_number": "PO-9012",
+        "amount": 450,
+        "due_date": "2026-12-22",
+        "raw_text": "Invoice INV-9303 from BrightClean Co. Office deep clean, PO-9012. Total 450 TND."
+      }
+    ]
+  },
+  "approver": {
+    "INV-9301": true,
+    "INV-9302": true,
+    "INV-9303": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-9301": "paid",
+      "INV-9302": "paid",
+      "INV-9303": "paid"
+    },
+    "required_tools": {
+      "INV-9301": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-9302": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-9303": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "chaos": null,
+  "limits": null
+}

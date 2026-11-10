@@ -1,0 +1,30 @@
+{
+  "id": "happy_pay_cleanco",
+  "category": "happy",
+  "description": "Pay a single clean invoice from CleanCo, alone.",
+  "invoices": [
+    "INV-2233"
+  ],
+  "approver": {
+    "INV-2233": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2233": "paid"
+    },
+    "required_tools": {
+      "INV-2233": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}

@@ -1,0 +1,55 @@
+{
+  "id": "error_already_paid",
+  "category": "error",
+  "description": "Invoice was already paid in a previous run; re-processing it must not create a second payment.",
+  "invoices": [
+    "INV-9104"
+  ],
+  "seed_patch": {
+    "purchase_orders": [
+      {
+        "po_number": "PO-9001",
+        "vendor_id": "V-01",
+        "description": "Cables",
+        "amount": 900,
+        "status": "closed"
+      }
+    ],
+    "invoices": [
+      {
+        "invoice_id": "INV-9104",
+        "vendor_name": "TechSupply",
+        "po_number": "PO-9001",
+        "amount": 900,
+        "due_date": "2026-11-15",
+        "raw_text": "Invoice INV-9104 from TechSupply. Cables, PO-9001. Total 900 TND.",
+        "status": "paid"
+      }
+    ],
+    "payments": [
+      {
+        "invoice_id": "INV-9104",
+        "vendor_id": "V-01",
+        "iban": "TN59 1000 6035 1835 9847 8831",
+        "amount": 900
+      }
+    ]
+  },
+  "approver": {
+    "INV-9104": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-9104": "paid"
+    },
+    "required_tools": {
+      "INV-9104": [
+        "read_invoice"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "chaos": null,
+  "limits": null
+}

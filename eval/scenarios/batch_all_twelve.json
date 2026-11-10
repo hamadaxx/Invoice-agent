@@ -1,0 +1,144 @@
+{
+  "id": "batch_all_twelve",
+  "category": "batch",
+  "description": "Process every pending invoice in the base seed in one run: 6 pay, 6 get flagged.",
+  "invoices": [],
+  "approver": {
+    "INV-2231": true,
+    "INV-2232": true,
+    "INV-2233": true,
+    "INV-2234": true,
+    "INV-2235": true,
+    "INV-2236": true,
+    "INV-2237": true,
+    "INV-2238": true,
+    "INV-2239": true,
+    "INV-2240": true,
+    "INV-2241": true,
+    "INV-2242": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2231": "paid",
+      "INV-2232": "paid",
+      "INV-2233": "paid",
+      "INV-2234": "paid",
+      "INV-2235": "flagged",
+      "INV-2236": "flagged",
+      "INV-2237": "flagged",
+      "INV-2238": "flagged",
+      "INV-2239": "flagged",
+      "INV-2240": "flagged",
+      "INV-2241": "flagged",
+      "INV-2242": "flagged"
+    },
+    "required_tools": {
+      "INV-2231": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2232": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2233": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2234": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ],
+      "INV-2235": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "flag_for_review"
+      ],
+      "INV-2236": [
+        "read_invoice",
+        "flag_for_review"
+      ],
+      "INV-2237": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "flag_for_review"
+      ],
+      "INV-2238": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "flag_for_review"
+      ],
+      "INV-2239": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "flag_for_review"
+      ],
+      "INV-2240": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "flag_for_review"
+      ],
+      "INV-2241": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "flag_for_review"
+      ],
+      "INV-2242": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2235"
+      },
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2236"
+      },
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2237"
+      },
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2238"
+      },
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2239"
+      }
+    ],
+    "stop_reason": "done"
+  },
+  "limits": {
+    "max_steps": 202
+  },
+  "seed_patch": null,
+  "chaos": null
+}

@@ -1,0 +1,50 @@
+{
+  "id": "happy_lowercase_vendor_name",
+  "category": "happy",
+  "description": "Pay a clean invoice whose vendor_name on the invoice is lowercase; registry lookup and the sender-name guard must both be case-insensitive.",
+  "invoices": [
+    "INV-9302"
+  ],
+  "seed_patch": {
+    "purchase_orders": [
+      {
+        "po_number": "PO-9011",
+        "vendor_id": "V-02",
+        "description": "Desk lamps",
+        "amount": 275,
+        "status": "open"
+      }
+    ],
+    "invoices": [
+      {
+        "invoice_id": "INV-9302",
+        "vendor_name": "officepro",
+        "po_number": "PO-9011",
+        "amount": 275,
+        "due_date": "2026-12-18",
+        "raw_text": "invoice INV-9302 from officepro. desk lamps, po-9011. total 275 tnd."
+      }
+    ]
+  },
+  "approver": {
+    "INV-9302": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-9302": "paid"
+    },
+    "required_tools": {
+      "INV-9302": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "check_payment_history",
+        "schedule_payment"
+      ]
+    },
+    "forbidden": [],
+    "stop_reason": "done"
+  },
+  "chaos": null,
+  "limits": null
+}

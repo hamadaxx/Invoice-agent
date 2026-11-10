@@ -1,0 +1,34 @@
+{
+  "id": "error_blocked_vendor",
+  "category": "error",
+  "description": "Vendor exists in the registry but is blocked (OldPrint, PO-1008).",
+  "invoices": [
+    "INV-2239"
+  ],
+  "approver": {
+    "INV-2239": true
+  },
+  "expected": {
+    "outcomes": {
+      "INV-2239": "flagged"
+    },
+    "required_tools": {
+      "INV-2239": [
+        "read_invoice",
+        "lookup_purchase_order",
+        "get_vendor",
+        "flag_for_review"
+      ]
+    },
+    "forbidden": [
+      {
+        "tool": "schedule_payment",
+        "invoice_id": "INV-2239"
+      }
+    ],
+    "stop_reason": "done"
+  },
+  "seed_patch": null,
+  "chaos": null,
+  "limits": null
+}
